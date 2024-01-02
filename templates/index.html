@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulsar SSE Demo</title>
+</head>
+<body>
+    <h1>Messages from Pulsar</h1>
+    <div id="message-container"></div>
+
+    <script>
+        const eventSource = new EventSource('/stream');
+        const messageContainer = document.getElementById('message-container');
+
+        eventSource.onmessage = function(event) {
+            const message = event.data;
+            messageContainer.innerHTML += `<p>${message}</p>`;
+        };
+    </script>
+</body>
+</html>
